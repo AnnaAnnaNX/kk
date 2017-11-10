@@ -1,2 +1,42 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class='header'>
+  <h1>{{title}}</h1>
+</div>
+<div class='center'>
+  <form action="/count" method="post">
+    <ul>
+      <li>
+        <a href="/foto-front">Фронтальное фото</a>
+      </li>
+      <li>
+        <a href="/foto-top">Фото сверху</a>
+      </li>
+      <li>
+        <a href="/points-front">Точки фронтального фото</a>
+      </li>
+      <li>
+        <a href="/points-top">Точки фото сверху</a>
+      </li>
+      <li>
+        <a href="/scale">Маштабирование</a>
+      </li>
+      <li>
+        <a href="/obl-1">Область #1</a>
+      </li>
+      <li>
+        <a href="/obl-2">Область #2</a>
+      </li>
+      <li>
+        <a href="/obl-3">Область #3</a>
+      </li>
+    </ul>
+    <fieldset>
+      <input type="submit" value="Посчитать">
+    </fieldset>
+    <fieldset>
+      <input type="button" value="Сбросить данные">
+    </fieldset>
+  </form>
+</div>
+<div class="footer">
+  <a href='/'>Главная</a>
+</div>

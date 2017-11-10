@@ -6,7 +6,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var fotoFront = require('./routes/foto-front');
+var fotoTop = require('./routes/foto-top');
+var pointsFront = require('./routes/points-front');
+var pointsTop = require('./routes/points-top');
+var scale = require('./routes/scale');
+var obl1 = require('./routes/obl-1');
+var obl2 = require('./routes/obl-2');
+var obl3 = require('./routes/obl-3');
+var count = require('./routes/count');
 
 var app = express();
 
@@ -23,7 +31,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/foto-front', fotoFront);
+app.use('/foto-top', fotoTop);
+app.use('/points-front', pointsFront);
+app.use('/points-top', pointsTop);
+app.use('/scale', scale);
+app.use('/obl-1', obl1);
+app.use('/obl-2', obl2);
+app.use('/obl-3', obl3);
+app.use('/count', count);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

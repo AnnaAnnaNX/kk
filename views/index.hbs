@@ -1,5 +1,8 @@
-<div class='header'>
+<div class="header">
   <h1>{{title}}</h1>
+  <p>
+    Заполните данные
+  </p>
 </div>
 <div class='center'>
   <form action="/count" method="post">
@@ -20,13 +23,37 @@
         <a href="/scale">Маштабирование</a>
       </li>
       <li>
-        <a href="/obl-1">Область #1</a>
+        <div>
+          <a href="/obl-1">Область #1</a>
+        </div>
+        <div>
+          <select name='food1'>
+            <option value='1'>Картошка</option>
+            <option value='2'>Мясо</option>
+          </select>
+        </div>
       </li>
       <li>
-        <a href="/obl-2">Область #2</a>
+        <div>
+          <a href="/obl-2">Область #2</a>
+        </div>
+        <div>
+          <select name='food2'>
+            <option value='1'>Картошка</option>
+            <option value='2'>Мясо</option>
+          </select>
+        </div>
       </li>
       <li>
-        <a href="/obl-3">Область #3</a>
+        <div>
+          <a href="/obl-3">Область #3</a>
+        </div>
+        <div>
+          <select name='food3'>
+            <option value='1'>Картошка</option>
+            <option value='2'>Мясо</option>
+          </select>
+        </div>
       </li>
     </ul>
     <fieldset>

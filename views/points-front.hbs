@@ -2,20 +2,23 @@
   <h1>{{title}}</h1>
 </div>
 <div class='center'>
-  <form action="/front-points">
+  <form action="/points-front" method="post">
     <fieldset>
       <label>Точка 1</label>
-      <input type="text" value={{t1.x}}>
-      <input type="text" value={{t1.y}}>
+      <input type="text" name='x1' value={{x1}}>
+      <input type="text" name='y1' value={{y1}}>
     </fieldset>
     <fieldset>
       <label>Точка 2</label>
-      <input type="text" value={{t2.x}}>
-      <input type="text" value={{t2.y}}>
+      <input type="text" name='x2' value={{x2}}>
+      <input type="text" name='y2' value={{y2}}>
     </fieldset>
       <label>Точка 3</label>
-      <input type="text" value={{t3.x}}>
-      <input type="text" value={{t3.y}}>
+      <input type="text" name='x3' value={{x3}}>
+      <input type="text" name='y3' value={{y3}}>
+    </fieldset>
+    <fieldset>
+      <input type='submit' value='Ввод'>
     </fieldset>
   </form>
 </div>

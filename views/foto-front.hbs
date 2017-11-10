@@ -2,9 +2,26 @@
   <h1>{{title}}</h1>
 </div>
 <div class='center'>
-  <div class='wrap-img'>
-    <img src="">
+  {{#if haveFoto}}
+    <div>
+      <h3>Front foto</h3>
+      <div class='img'>
+        <img src="/images/foto-front">
+      </div>
+    </div>
+    </if>
+  {{/if}}
+
+  <div>
+    <h3>Download front foto</h3>
+    <form action="/foto-front" method="post" enctype="multipart/form-data">
+      <fieldset>
+        <input type="file" name="foto_front">
+        <input type="submit">
+      </fieldset>
+    </form>
   </div>
+
 </div>
 <div class="footer">
   <a href='/'>Главная</a>

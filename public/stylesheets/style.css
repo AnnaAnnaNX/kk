@@ -67,20 +67,12 @@ h3{
 	text-transform: uppercase;
 	font-weight: bold;
 }
-.header{
-	position:absolute;
-	top:0;
-	left:0;
-	height:50px;
-}
-
 .center{
   background: white;
   background-size: auto 100%;
 	min-height: 100%;
 	position:relative;
 	height:500px;
-	padding-top:100px;
   background-repeat: no-repeat;
   background-size: 100% auto;
   margin-bottom: 50px;
@@ -112,7 +104,7 @@ h3{
   width: 100px;
   height: 100px;
   margin: 0 auto;
-  padding-top: 350px;
+  padding-top: 150px;
   width: 50%;
 }
 .center-form{

@@ -26,7 +26,7 @@ router.post('/', upload.any(), function(req, res, next) {
     console.log('renamed complete');
   });
 
-  res.redirect('/');
+  res.redirect('/scale');
 });
 
 module.exports = router;

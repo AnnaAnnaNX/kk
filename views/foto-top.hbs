@@ -1,28 +1,17 @@
-<div class='header'>
-  <h1>{{title}}</h1>
-</div>
-<div class='center'>
-  {{#if haveFoto}}
-    <div>
-      <h3>Front foto</h3>
-      <div class='img'>
-        <img src="/images/foto-top">
-      </div>
-    </div>
-    </if>
-  {{/if}}
+<div class='center' {{#if haveFoto}} style="background-image: url('/images/foto-top');" {{/if}}>
 
-  <div>
-    <h3>Download front foto</h3>
-    <form action="/foto-top" method="post" enctype="multipart/form-data">
-      <fieldset>
-        <input type="file" name="foto_top">
-        <input type="submit">
-      </fieldset>
-    </form>
+  <div class='wrap-center-form'>
+    <div class='center-form'>
+      <h3>Загрузите {{#if haveFoto}}другое{{/if}} фото сверху</h3>
+      <form action="/foto-top" method="post" enctype="multipart/form-data">
+        <fieldset>
+          <input class='center-button' type="file" name="foto_top">
+        </fieldset>
+        <fieldset>
+          <input class='center-button' type="submit" value='Отправить'>
+        </fieldset>
+      </form>
+    </div>
   </div>
 
-</div>
-<div class="footer">
-  <a href='/'>Главная</a>
 </div>

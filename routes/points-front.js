@@ -35,13 +35,13 @@ router.get('/', function(req, res, next) {
       p[2].x  = data[2].x;
       p[2].y  = data[2].y;
     }
-}
+} console.log(p[2].x);
   res.render('points-front', { title: 'Ввод точек фронтального вида',
                                 x1: p[0].x,
                                 y1: p[0].y,
-                                x2: p[1].y,
+                                x2: p[1].x,
                                 y2: p[1].y,
-                                x3: p[2].y,
+                                x3: p[2].x,
                                 y3: p[2].y
                               });
 });
@@ -54,7 +54,6 @@ router.post('/', function(req, res, next) {
   data.push({x: req.body.x3, y: req.body.y3});
   json = JSON.stringify(data); //convert it back to json
   fs.writeFileSync('data/pointsFront.json', json, 'utf8');
-  req.body.x1
 
   res.redirect('/');
 });

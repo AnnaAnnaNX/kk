@@ -140,3 +140,29 @@ body{
 .center-form fieldset{
 	text-align:center;
 }
+
+
+
+.wrap-canvas{
+	margin: 0 auto;
+	border: 1px solid red;
+  display: block;
+	position:relative;
+	width:1000px;
+	height: 500px;
+}
+canvas{
+	margin: 0 auto;
+	border: 1px solid red;
+  display: block;
+}
+.point{
+	display: inline-block;
+	width:20px;
+	height:20px;
+	background: red;
+	position: absolute;
+	top:0;
+	left:0;
+
+}

@@ -1,35 +1,51 @@
-<div class='header'>
-  <h1>{{title}}</h1>
-</div>
+
 <div class='center'>
-  <form action="/front-points">
+  <h3>Задайте еду #2</h3>
+    <div class='wrap-canvas'>
+      <canvas class='obl2' id='canvas' width=1000 height=500>
+      </canvas>
+      <span id='p1' class='point'></span>
+      <span id='p2' class='point'></span>
+      <span id='p3' class='point'></span>
+      <span id='p4' class='point'></span>
+      <span id='p5' class='point'></span>
+    </div>
+</div>
+
+  <form action="/obl-2" method="post">
+    <fieldset>
+      <select name="food">
+        <option value='картошка'>картошка</option>
+        <option value='мясо'>мясо</option>
+      </select>
+    </fieldset>
     <fieldset>
       <label>Точка 1</label>
-      <input type="text" value={{t1.x}}>
-      <input type="text" value={{t1.y}}>
+      <input type="text" id="x1" class='x1' name='x1' value={{x1}}>
+      <input type="text" id="y1" class='y1' name='y1' value={{y1}}>
     </fieldset>
     <fieldset>
       <label>Точка 2</label>
-      <input type="text" value={{t2.x}}>
-      <input type="text" value={{t2.y}}>
+      <input type="text" id="x2" class='x2' name='x2' value={{x2}}>
+      <input type="text" id="y2" class='y2' name='y2' value={{y2}}>
     </fieldset>
     <fieldset>
       <label>Точка 3</label>
-      <input type="text" value={{t3.x}}>
-      <input type="text" value={{t3.y}}>
+      <input type="text" id="x3" class='x3' name='x3' value={{x3}}>
+      <input type="text" id="y3" class='y3' name='y3' value={{y3}}>
     </fieldset>
     <fieldset>
       <label>Точка 4</label>
-      <input type="text" value={{t3.x}}>
-      <input type="text" value={{t3.y}}>
+      <input type="text" id="x4" class='x4' name='x4' value={{x4}}>
+      <input type="text" id="y4" class='y4' name='y4' value={{y4}}>
     </fieldset>
     <fieldset>
       <label>Точка 5</label>
-      <input type="text" value={{t3.x}}>
-      <input type="text" value={{t3.y}}>
+      <input type="text" id="x5" class='x5' name='x5' value={{x5}}>
+      <input type="text" id="y5" class='y5' name='y5' value={{y5}}>
+    </fieldset>
+    <fieldset>
+      <input type='submit' value='Ввод'>
     </fieldset>
   </form>
-</div>
-<div class="footer">
-  <a href='/'>Главная</a>
 </div>

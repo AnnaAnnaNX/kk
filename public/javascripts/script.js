@@ -19,6 +19,9 @@ console.log(document.getElementById('canvas'));
         if ( $('canvas.scale').length ) {
           pic.src = '/images/foto-front';
         }
+        if ( $('canvas[class^="obl"]').length ) {
+          pic.src = '/images/foto-top';
+        }
         pic.onload = function() {
           ctx.drawImage(pic, 0, 0);
                 if ( $('canvas.front').length ) {
@@ -70,6 +73,27 @@ console.log(document.getElementById('canvas'));
                   ///////end scale point
                 }
 
+                if ( $('canvas[class^="obl"]').length ) {
+                    ///scale point
+                    ctx.strokeStyle="#FF0000";
+                    ctx.lineWidth=5;
+                    ctx.beginPath();
+                    ctx.moveTo( $('.x1').val(), $('.y1').val());
+                    ctx.lineTo( $('.x2').val(), $('.y2').val());
+                    ctx.lineTo( $('.x3').val(), $('.y3').val());
+                    ctx.lineTo( $('.x4').val(), $('.y4').val());
+                    ctx.lineTo( $('.x5').val(), $('.y5').val());
+                    ctx.lineTo( $('.x1').val(), $('.y1').val());
+                    ctx.stroke();
+
+                    $('#p1').css('top', ($('.y1').val()-10)+'px').css('left', ($('.x1').val()-10)+'px');
+                    $('#p2').css('top', ($('.y2').val()-10)+'px').css('left', ($('.x2').val()-10)+'px');
+                    $('#p3').css('top', ($('.y3').val()-10)+'px').css('left', ($('.x3').val()-10)+'px');
+                    $('#p4').css('top', ($('.y4').val()-10)+'px').css('left', ($('.x4').val()-10)+'px');
+                    $('#p5').css('top', ($('.y5').val()-10)+'px').css('left', ($('.x5').val()-10)+'px');
+                    ///////end scale point
+                  }
+
         }
 
   }
@@ -85,10 +109,10 @@ console.log(document.getElementById('canvas'));
     $('#p3').click(function(){
       Np = 3;
     });
-    $('#p5').click(function(){
+    $('#p4').click(function(){
       Np = 4;
     });
-    $('#p4').click(function(){
+    $('#p5').click(function(){
       Np = 5;
     });
     $('#front').click(function(){

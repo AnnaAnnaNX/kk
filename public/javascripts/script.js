@@ -1,5 +1,5 @@
 $(function() {
-console.log(document.getElementById('canvas'));
+//console.log(document.getElementById('canvas'));
   var Np = 0;
 
   function points_front(){
@@ -98,7 +98,7 @@ console.log(document.getElementById('canvas'));
 
   }
 
-    points_front('/images/foto-top');
+    if ($('canvas').length) {points_front();}
 
     $('#p1').click(function(){
       Np = 1;
@@ -119,6 +119,7 @@ console.log(document.getElementById('canvas'));
 
     });
 
+    if ($('canvas').length)
     document.getElementById('canvas').onclick = function(e,) {
       var x = e.offsetX==undefined?e.layerX:e.offsetX;
       var y = e.offsetY==undefined?e.layerY:e.offsetY;

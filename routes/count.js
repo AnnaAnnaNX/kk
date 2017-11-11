@@ -35,8 +35,12 @@ function S(x1,y1,x2,y2,x3,y3){
   var l_real;
   var k_real;
   var d_top;//diameter top foto
-
-
+  var koef_top;
+  var margin_plate;
+  var r_top;
+  var r;
+  var S_whole;
+  var V_whole;
 
 //#1
   if (fs.existsSync('data/pointsFront.json')){
@@ -116,6 +120,34 @@ else{
 }
 
 d_top = d(x1_top,y1_top,x3_top,y3_top);
+koef_top = l/d_top;
+margin_plate = d(x1_top,y1_top,x2_top,y2_top);
+r_top = (d_top - margin_plate*2)/2;
+r = r_top * koef_top;
+console.log(r);
+/////whole
+
+//if (fs.existsSync('data/pointsTop.json')){
+    S_whole = Math.PI * Math.pow(r,2);
+    V_whole = S_whole * h;
+
+
+
+///obl1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -129,9 +161,13 @@ d_top = d(x1_top,y1_top,x3_top,y3_top);
                         koef: koef,
                         l_real: l_real,
                         h_real: h_real,
-                        d_top: d_top
-
-
+                        d_top: d_top,
+                        margin_plate: margin_plate,
+                        koef_top: koef_top,
+                        r_top: r_top,
+                        r: r,
+                        S_whole: S_whole,
+                        V_whole: V_whole
                             });
 });
 

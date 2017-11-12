@@ -42,7 +42,8 @@ function S(x1,y1,x2,y2,x3,y3, koef){
   var S_whole;
   var V_whole;
   var S1,S2,S3,S_obl1,S_obl2,S_obl3;
-  var S_obl1_real,S_obl2_real,S_obl3_real;
+  var S_obl_sum;
+  var V_obl1,V_obl2,V_obl3;
 
 //#1
   if (fs.existsSync('data/pointsFront.json')){
@@ -135,44 +136,102 @@ console.log(r);
     V_whole = S_whole * h_real;
 
 
+    S_obl_sum = 0;
+    ///obl1
+    if (fs.existsSync('data/obl1.json')){
+      console.log('data/obl1.json exists');
+      data = fs.readFileSync('data/obl1.json', 'utf8');
 
-///obl1
-if (fs.existsSync('data/obl1.json')){
-  console.log('data/obl1.json exists');
-  data = fs.readFileSync('data/obl1.json', 'utf8');
+      if ( data == '' ){
+        console.log('data/obl1.json empty');
+      }
+      else{
+        console.log('data/obl1.json doesnt empty');
+        data = fs.readFileSync('data/obl1.json', 'utf8');
+        data = JSON.parse(data);
+        x1_obl1 = data[0].x;
+        y1_obl1  = data[0].y;
+        x2_obl1  = data[1].x;
+        y2_obl1  = data[1].y;
+        x3_obl1  = data[2].x;
+        y3_obl1  = data[2].y;
+        x4_obl1  = data[3].x;
+        y4_obl1  = data[3].y;
+        x5_obl1  = data[4].x;
+        y5_obl1  = data[4].y;
+      }
+      S_obl1 = 0;
+      S1 = S(x1_obl1,y1_obl1,x2_obl1,y2_obl1,x3_obl1,y3_obl1,koef_top);
+      S2 = S(x1_obl1,y1_obl1,x3_obl1,y3_obl1,x4_obl1,y4_obl1,koef_top);
+      S3 = S(x1_obl1,y1_obl1,x4_obl1,y4_obl1,x5_obl1,y5_obl1,koef_top);
+      S_obl1 = S1 + S2 + S3;
+      V_obl1 = S_obl1 * h_real;
+      S_obl_sum+=S_obl1;
+    }
 
-  if ( data == '' ){
-    console.log('data/obl1.json empty');
-  }
-  else{
-    console.log('data/obl1.json doesnt empty');
-    data = fs.readFileSync('data/obl1.json', 'utf8');
-    data = JSON.parse(data);
-    x1_obl1 = data[0].x;
-    y1_obl1  = data[0].y;
-    x2_obl1  = data[1].x;
-    y2_obl1  = data[1].y;
-    x3_obl1  = data[2].x;
-    y3_obl1  = data[2].y;
-    x4_obl1  = data[3].x;
-    y4_obl1  = data[3].y;
-    x5_obl1  = data[4].x;
-    y5_obl1  = data[4].y;
-  }
+    ///obl2
+    if (fs.existsSync('data/obl2.json')){
+      console.log('data/obl2.json exists');
+      data = fs.readFileSync('data/obl2.json', 'utf8');
 
-  S_obl1 = 0;
-  S1 = S(x1_obl1,y1_obl1,x2_obl1,y2_obl1,x3_obl1,y3_obl1,koef_top);
-  S2 = S(x1_obl1,y1_obl1,x3_obl1,y3_obl1,x4_obl1,y4_obl1,koef_top);
-  S3 = S(x1_obl1,y1_obl1,x4_obl1,y4_obl1,x5_obl1,y5_obl1,koef_top);
-  S_obl1 = S1 + S2 + S3;
+      if ( data == '' ){
+        console.log('data/obl2.json empty');
+      }
+      else{
+        console.log('data/obl2.json doesnt empty');
+        data = fs.readFileSync('data/obl2.json', 'utf8');
+        data = JSON.parse(data);
+        x1_obl1 = data[0].x;
+        y1_obl1  = data[0].y;
+        x2_obl1  = data[1].x;
+        y2_obl1  = data[1].y;
+        x3_obl1  = data[2].x;
+        y3_obl1  = data[2].y;
+        x4_obl1  = data[3].x;
+        y4_obl1  = data[3].y;
+        x5_obl1  = data[4].x;
+        y5_obl1  = data[4].y;
+      }
+      S_obl2 = 0;
+      S1 = S(x1_obl1,y1_obl1,x2_obl1,y2_obl1,x3_obl1,y3_obl1,koef_top);
+      S2 = S(x1_obl1,y1_obl1,x3_obl1,y3_obl1,x4_obl1,y4_obl1,koef_top);
+      S3 = S(x1_obl1,y1_obl1,x4_obl1,y4_obl1,x5_obl1,y5_obl1,koef_top);
+      S_obl2 = S1 + S2 + S3;
+      V_obl2 = S_obl2 * h_real;
+      S_obl_sum+=S_obl2;
+    }
 
-  console.log(S1);
-  console.log(S2);
-  console.log(S3);
+    ///obl3
+    if (fs.existsSync('data/obl3.json')){
+      console.log('data/obl3.json exists');
+      data = fs.readFileSync('data/obl3.json', 'utf8');
 
-
-
-}
+      if ( data == '' ){
+        console.log('data/obl3.json empty');
+      }
+      else{
+        console.log('data/obl3.json doesnt empty');
+        data = fs.readFileSync('data/obl3.json', 'utf8');
+        data = JSON.parse(data);
+        x1_obl1 = data[0].x;
+        y1_obl1  = data[0].y;
+        x2_obl1  = data[1].x;
+        y2_obl1  = data[1].y;
+        x3_obl1  = data[2].x;
+        y3_obl1  = data[2].y;
+        x4_obl1  = data[3].x;
+        y4_obl1  = data[3].y;
+        x5_obl1  = data[4].x;
+        y5_obl1  = data[4].y;
+      }
+      S_obl3 = 0;
+      S1 = S(x1_obl1,y1_obl1,x2_obl1,y2_obl1,x3_obl1,y3_obl1,koef_top);
+      S2 = S(x1_obl1,y1_obl1,x3_obl1,y3_obl1,x4_obl1,y4_obl1,koef_top);
+      S3 = S(x1_obl1,y1_obl1,x4_obl1,y4_obl1,x5_obl1,y5_obl1,koef_top);
+      S_obl3 = S1 + S2 + S3;
+      V_obl3 = S_obl3 * h_real;
+      S_obl_sum+=S_obl3;
+    }
 
 
 
@@ -208,7 +267,14 @@ if (fs.existsSync('data/obl1.json')){
                         r: r,
                         S_whole: S_whole,
                         V_whole: V_whole,
-                        S_obl1: S_obl1
+                        S_obl1: S_obl1,
+                        S_obl2: S_obl2,
+                        S_obl3: S_obl3,
+                        V_obl1: V_obl1,
+                        V_obl2: V_obl2,
+                        V_obl3: V_obl3,
+                        V_obl_sum: V_obl1+V_obl2+V_obl3,
+                        S_obl_sum: S_obl_sum
                             });
 });
 

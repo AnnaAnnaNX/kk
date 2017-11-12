@@ -274,7 +274,11 @@ if (flag=='whole'){
 }
 
 
-
+l_real = l_real.toFixed();
+h_real = h_real.toFixed();
+var margin_plate_real = margin_plate*koef_top
+margin_plate_real = margin_plate_real.toFixed();
+r = r.toFixed();
 V_whole = V_whole.toFixed();
 V_obl_sum = V_obl1 + V_obl2 + V_obl3;
 V_obl1 = V_obl1.toFixed();
@@ -296,7 +300,7 @@ countCalories = countCalories.toFixed();
                         h_real: h_real,
                         d_top: d_top,
                         margin_plate: margin_plate,
-                        margin_plate_real: margin_plate*koef_top,
+                        margin_plate_real: margin_plate_real,
                         koef_top: koef_top,
                         r_top: r_top,
                         r: r,

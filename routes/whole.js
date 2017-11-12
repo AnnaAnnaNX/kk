@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   var data = [];
 
-  data.push({x: req.body.food});
+  data.push({food: req.body.food});
   json = JSON.stringify(data); //convert it back to json
   fs.writeFileSync('data/whole.json', json, 'utf8');
 

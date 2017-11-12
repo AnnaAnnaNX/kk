@@ -24,6 +24,13 @@ function S(x1,y1,x2,y2,x3,y3, koef){
 
 
   //count
+  var calories = {
+    'пюрэ из мяса птицы':1,
+    'морковка по-корейски':1.5
+  };
+
+
+
   var x1,y1,x2,y2,x1_scale,y1_scale,x2_scale,y2_scale;
   var x1_top,y1_top,x2_top,y2_top,x3_top,y3_top;
   var x1_obl1,y1_obl1,x2_obl1,y2_obl1,x3_obl1,y3_obl1,x4_obl1,y4_obl1,x5_obl1,y5_obl1;
@@ -42,9 +49,11 @@ function S(x1,y1,x2,y2,x3,y3, koef){
   var S_whole;
   var V_whole;
   var S1,S2,S3,S_obl1,S_obl2,S_obl3;
-  var S_obl_sum;
-  var V_obl1,V_obl2,V_obl3;
-
+  var S_obl_sum = 0;
+  var V_obl1 = 0,V_obl2 = 0,V_obl3 = 0;
+  var flag='whole';
+  var food1,food2,food3;
+  var countCalories = 0;
 //#1
   if (fs.existsSync('data/pointsFront.json')){
     console.log('data/pointsFront.json exists');
@@ -138,7 +147,7 @@ console.log(r);
 
     S_obl_sum = 0;
     ///obl1
-    if (fs.existsSync('data/obl1.json')){
+    if (fs.existsSync('data/obl1.json')){flag = 'obl1';
       console.log('data/obl1.json exists');
       data = fs.readFileSync('data/obl1.json', 'utf8');
 
@@ -159,6 +168,7 @@ console.log(r);
         y4_obl1  = data[3].y;
         x5_obl1  = data[4].x;
         y5_obl1  = data[4].y;
+        food1 = data[5].food;console.log('food1');
       }
       S_obl1 = 0;
       S1 = S(x1_obl1,y1_obl1,x2_obl1,y2_obl1,x3_obl1,y3_obl1,koef_top);
@@ -167,10 +177,11 @@ console.log(r);
       S_obl1 = S1 + S2 + S3;
       V_obl1 = S_obl1 * h_real;
       S_obl_sum+=S_obl1;
+      countCalories = countCalories +V_obl1*calories[food1];console.log(countCalories);
     }
 
     ///obl2
-    if (fs.existsSync('data/obl2.json')){
+    if (fs.existsSync('data/obl2.json')){flag = 'obl2';
       console.log('data/obl2.json exists');
       data = fs.readFileSync('data/obl2.json', 'utf8');
 
@@ -191,6 +202,7 @@ console.log(r);
         y4_obl1  = data[3].y;
         x5_obl1  = data[4].x;
         y5_obl1  = data[4].y;
+        food2 = data[5].food;console.log('food2'+food2);
       }
       S_obl2 = 0;
       S1 = S(x1_obl1,y1_obl1,x2_obl1,y2_obl1,x3_obl1,y3_obl1,koef_top);
@@ -199,10 +211,11 @@ console.log(r);
       S_obl2 = S1 + S2 + S3;
       V_obl2 = S_obl2 * h_real;
       S_obl_sum+=S_obl2;
+      countCalories+=V_obl2*calories[food2];console.log(countCalories);
     }
 
     ///obl3
-    if (fs.existsSync('data/obl3.json')){
+    if (fs.existsSync('data/obl3.json')){flag = 'obl3';
       console.log('data/obl3.json exists');
       data = fs.readFileSync('data/obl3.json', 'utf8');
 
@@ -223,6 +236,7 @@ console.log(r);
         y4_obl1  = data[3].y;
         x5_obl1  = data[4].x;
         y5_obl1  = data[4].y;
+        food3 = data[5].food;console.log(food3);
       }
       S_obl3 = 0;
       S1 = S(x1_obl1,y1_obl1,x2_obl1,y2_obl1,x3_obl1,y3_obl1,koef_top);
@@ -231,14 +245,32 @@ console.log(r);
       S_obl3 = S1 + S2 + S3;
       V_obl3 = S_obl3 * h_real;
       S_obl_sum+=S_obl3;
+      countCalories+=V_obl3*calories[food3];console.log(countCalories);
     }
 
 
 
 
+///////////////////////////////
+///count calories
+var product;
+if (flag=='whole'){
+  if (fs.existsSync('data/whole.json')){
+    console.log('data/whole.json exists');
+    data = fs.readFileSync('data/whole.json', 'utf8');
 
-
-
+    if ( data == '' ){
+      console.log('data/whole.json empty');
+    }
+    else{
+      console.log('data/whole.json doesnt empty');
+      data = fs.readFileSync('data/whole.json', 'utf8');
+      data = JSON.parse(data);
+      product = data[0].food;console.log(product);
+      countCalories = countCalories+V_whole*calories[product];
+    }
+  }
+}
 
 
 
@@ -274,7 +306,8 @@ console.log(r);
                         V_obl2: V_obl2,
                         V_obl3: V_obl3,
                         V_obl_sum: V_obl1+V_obl2+V_obl3,
-                        S_obl_sum: S_obl_sum
+                        S_obl_sum: S_obl_sum,
+                        countCalories: countCalories
                             });
 });
 

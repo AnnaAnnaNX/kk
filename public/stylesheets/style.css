@@ -168,3 +168,6 @@ table,td{
 	border:1px solid;
 	padding:5px;
 }
+.block-none{
+	display:none;
+}

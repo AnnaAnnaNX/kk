@@ -51,6 +51,7 @@ function S(x1,y1,x2,y2,x3,y3, koef){
   var S1,S2,S3,S_obl1,S_obl2,S_obl3;
   var S_obl_sum = 0;
   var V_obl1 = 0,V_obl2 = 0,V_obl3 = 0;
+  var V_obl_sum = 0;
   var flag='whole';
   var food1,food2,food3;
   var countCalories = 0;
@@ -274,11 +275,13 @@ if (flag=='whole'){
 
 
 
-
-
-
-
-
+V_whole = V_whole.toFixed();
+V_obl_sum = V_obl1 + V_obl2 + V_obl3;
+V_obl1 = V_obl1.toFixed();
+V_obl2 = V_obl2.toFixed();
+V_obl3 = V_obl3.toFixed();
+V_obl_sum = V_obl_sum.toFixed();
+countCalories = countCalories.toFixed();
 
 
 
@@ -305,7 +308,7 @@ if (flag=='whole'){
                         V_obl1: V_obl1,
                         V_obl2: V_obl2,
                         V_obl3: V_obl3,
-                        V_obl_sum: V_obl1+V_obl2+V_obl3,
+                        V_obl_sum: V_obl_sum,
                         S_obl_sum: S_obl_sum,
                         countCalories: countCalories
                             });

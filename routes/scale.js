@@ -42,7 +42,7 @@ router.post('/', function(req, res, next) {
   json = JSON.stringify(data); //convert it back to json
   fs.writeFileSync('data/scale.json', json, 'utf8');
 
-  res.redirect('/obl-1');
+  res.redirect('/whole');
 });
 
 module.exports = router;

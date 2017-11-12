@@ -187,7 +187,9 @@ fieldset{
 .center+form .center-button{
 	color:green;
 }
-select{
+select,
+label,
+[type='checkbox']{
 	font-size:25px;
 	margin:10px;
 }
@@ -202,4 +204,19 @@ h3{
 }
 table{
 	margin:0 auto;
+}
+table tr td:nth-child(2){
+	display:none;
+}
+table td{
+	text-align:center;
+}
+a:focus,
+button:focus,
+input[type=text]:focus,
+[type=submit]:focus{
+	outline:none;
+}
+.green{
+	color:green
 }

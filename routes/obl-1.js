@@ -62,7 +62,13 @@ router.post('/', function(req, res, next) {
   json = JSON.stringify(data); //convert it back to json
   fs.writeFileSync('data/obl1.json', json, 'utf8');
 
-  res.redirect('/obl-2');
+  if ( req.body.count){
+    console.log('');
+    res.redirect('/count');
+  }
+  else{
+    res.redirect('/obl-2');
+  }
 });
 
 module.exports = router;

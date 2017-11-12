@@ -163,5 +163,8 @@ canvas{
 	position: absolute;
 	top:0;
 	left:0;
-
+}
+table,td{
+	border:1px solid;
+	padding:5px;
 }

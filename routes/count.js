@@ -9,14 +9,12 @@ router.get('/', function(req, res, next) {
 function d(x1,y1,x2,y2){
   return Math.pow(Math.pow(x1-x2,2)+Math.pow(y1-y2,2),.5);
 }
-console.log(d(1,0,2,0));//1
-console.log(d(0,1,0,2));//1
 //S
-function S(x1,y1,x2,y2,x3,y3){
+function S(x1,y1,x2,y2,x3,y3, koef){
   var a,b,c,p;
-  a = d(x1,y1,x2,y2);
-  b = d(x2,y2,x3,y3);
-  c = d(x1,y1,x3,y3);
+  a = d(x1,y1,x2,y2)*koef;
+  b = d(x2,y2,x3,y3)*koef;
+  c = d(x1,y1,x3,y3)*koef;
   p = (a+b+c)/2;
   return Math.pow(p*(p-a)*(p-b)*(p-c),0.5)
 }
@@ -28,6 +26,7 @@ function S(x1,y1,x2,y2,x3,y3){
   //count
   var x1,y1,x2,y2,x1_scale,y1_scale,x2_scale,y2_scale;
   var x1_top,y1_top,x2_top,y2_top,x3_top,y3_top;
+  var x1_obl1,y1_obl1,x2_obl1,y2_obl1,x3_obl1,y3_obl1,x4_obl1,y4_obl1,x5_obl1,y5_obl1;
   var l;//leigth
   var h;//hight
   var l_scale;
@@ -37,10 +36,13 @@ function S(x1,y1,x2,y2,x3,y3){
   var d_top;//diameter top foto
   var koef_top;
   var margin_plate;
+  var d_top_real;
   var r_top;
   var r;
   var S_whole;
   var V_whole;
+  var S1,S2,S3,S_obl1,S_obl2,S_obl3;
+  var S_obl1_real,S_obl2_real,S_obl3_real;
 
 //#1
   if (fs.existsSync('data/pointsFront.json')){
@@ -120,7 +122,8 @@ else{
 }
 
 d_top = d(x1_top,y1_top,x3_top,y3_top);
-koef_top = l/d_top;
+koef_top = l_real/d_top;
+d_top_real = d_top * koef_top;
 margin_plate = d(x1_top,y1_top,x2_top,y2_top);
 r_top = (d_top - margin_plate*2)/2;
 r = r_top * koef_top;
@@ -129,12 +132,47 @@ console.log(r);
 
 //if (fs.existsSync('data/pointsTop.json')){
     S_whole = Math.PI * Math.pow(r,2);
-    V_whole = S_whole * h;
+    V_whole = S_whole * h_real;
 
 
 
 ///obl1
+if (fs.existsSync('data/obl1.json')){
+  console.log('data/obl1.json exists');
+  data = fs.readFileSync('data/obl1.json', 'utf8');
 
+  if ( data == '' ){
+    console.log('data/obl1.json empty');
+  }
+  else{
+    console.log('data/obl1.json doesnt empty');
+    data = fs.readFileSync('data/obl1.json', 'utf8');
+    data = JSON.parse(data);
+    x1_obl1 = data[0].x;
+    y1_obl1  = data[0].y;
+    x2_obl1  = data[1].x;
+    y2_obl1  = data[1].y;
+    x3_obl1  = data[2].x;
+    y3_obl1  = data[2].y;
+    x4_obl1  = data[3].x;
+    y4_obl1  = data[3].y;
+    x5_obl1  = data[4].x;
+    y5_obl1  = data[4].y;
+  }
+
+  S_obl1 = 0;
+  S1 = S(x1_obl1,y1_obl1,x2_obl1,y2_obl1,x3_obl1,y3_obl1,koef_top);
+  S2 = S(x1_obl1,y1_obl1,x3_obl1,y3_obl1,x4_obl1,y4_obl1,koef_top);
+  S3 = S(x1_obl1,y1_obl1,x4_obl1,y4_obl1,x5_obl1,y5_obl1,koef_top);
+  S_obl1 = S1 + S2 + S3;
+
+  console.log(S1);
+  console.log(S2);
+  console.log(S3);
+
+
+
+}
 
 
 
@@ -159,15 +197,18 @@ console.log(r);
                         h: h,
                         l_scale: l_scale,
                         koef: koef,
+                        d_top_real: d_top_real,
                         l_real: l_real,
                         h_real: h_real,
                         d_top: d_top,
                         margin_plate: margin_plate,
+                        margin_plate_real: margin_plate*koef_top,
                         koef_top: koef_top,
                         r_top: r_top,
                         r: r,
                         S_whole: S_whole,
-                        V_whole: V_whole
+                        V_whole: V_whole,
+                        S_obl1: S_obl1
                             });
 });
 

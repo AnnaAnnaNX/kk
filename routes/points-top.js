@@ -6,9 +6,9 @@ var fs = require('fs');
 router.get('/', function(req, res, next) {
   var data = [];
   var p = [];
-      p.push({x: '100', y: '400'});
-      p.push({x: '900', y: '100'});
-      p.push({x: '900', y: '100'});
+      p.push({x: '200', y: '250'});
+      p.push({x: '300', y: '250'});
+      p.push({x: '800', y: '250'});
 
   if (fs.existsSync('data/pointsTop.json')){
     console.log('data/pointsTop.json exists');

@@ -58,7 +58,7 @@ router.post('/', function(req, res, next) {
   data.push({x: req.body.x3, y: req.body.y3});
   data.push({x: req.body.x4, y: req.body.y4});
   data.push({x: req.body.x5, y: req.body.y5});
-  data.push({x: req.body.food});
+  data.push({food: req.body.food});
   json = JSON.stringify(data); //convert it back to json
   fs.writeFileSync('data/obl2.json', json, 'utf8');
 

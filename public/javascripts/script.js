@@ -48,10 +48,10 @@ $(function() {
                   //ctx.arc(100, 100, 100, 0, 2 * Math.PI, false);
                   var xcenter = ($('.x3').val()-$('.x1').val())/2 -(- $('.x1').val());
                   console.log(xcenter);
-                  ctx.arc(xcenter, $('.y1').val(), xcenter-$('.x2').val(), 0, 2 * Math.PI);
+                  ctx.arc(xcenter, $('.y1').val(), Math.abs(xcenter-$('.x2').val()), 0, 2 * Math.PI);
                   ctx.stroke();
                   ctx.beginPath();
-                  ctx.arc(xcenter, $('.y1').val(), ($('.x3').val()-$('.x1').val())/2, 0, 2 * Math.PI);
+                  ctx.arc(xcenter, $('.y1').val(), Math.abs(($('.x3').val()-$('.x1').val())/2), 0, 2 * Math.PI);
                   ctx.stroke();
 
                   $('#p1').css('top', ($('.y1').val()-10)+'px').css('left', ($('.x1').val()-10)+'px');

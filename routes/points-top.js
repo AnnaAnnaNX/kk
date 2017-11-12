@@ -30,7 +30,7 @@ router.get('/', function(req, res, next) {
     }
 }
 console.log(p);
-  res.render('points-top', { title: 'Ввод точек фронтального вида',
+  res.render('points-top', { title: 'Ввод точек вида сверху',
                                 x1: p[0].x,
                                 y1: p[0].y,
                                 x2: p[1].x,

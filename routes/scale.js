@@ -26,7 +26,7 @@ router.get('/', function(req, res, next) {
       p[1].y  = data[1].y;
     }
 }
-  res.render('scale', { title: 'Ввод точек фронтального вида',
+  res.render('scale', { title: 'Ввод точек масштабного объекта',
                                 x1: p[0].x,
                                 y1: p[0].y,
                                 x2: p[1].x,

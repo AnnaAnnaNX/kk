@@ -36,7 +36,7 @@ router.get('/', function(req, res, next) {
       p[4].y  = data[4].y;
     }
 }
-  res.render('obl-3', { title: 'Ввод точек фронтального вида',
+  res.render('obl-3', { title: 'Ввод точек области 3',
                                 x1: p[0].x,
                                 y1: p[0].y,
                                 x2: p[1].x,
